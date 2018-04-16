@@ -7,6 +7,5 @@ curl \
   -s \
   -H "Content-Type: application/json" \
   -H "Access-Token: $SPOKE_DAM_API_KEY" \
-  -H "svs-namespace: totokaelo" \
   -X "POST" -d '{ "styleNo": "157060" }' \
   "$TEAMWORK_DAM_HOST/external-api/media/get-style"

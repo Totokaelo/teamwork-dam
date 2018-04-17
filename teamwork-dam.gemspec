@@ -14,4 +14,7 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split($/)
   s.homepage    = 'https://github.com/Totokaelo/teamwork-dam'
   s.license     = 'MIT'
+
+  # Deploy dependencies
+  spec.add_runtime_dependency 'curb'
 end

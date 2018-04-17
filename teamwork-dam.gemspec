@@ -1,11 +1,11 @@
 lib = File.expand_path("../lib/", __FILE__)
 $:.unshift(lib) unless $:.include?(lib)
 
-require "teamwork-dam/version"
+require "teamwork/dam/version"
 
 Gem::Specification.new do |s|
   s.name        = 'teamwork-dam'
-  s.version     = Teamwork::DAM::VERSION
+  s.version     = Teamwork::Dam::VERSION
   s.date        = Time.new.strftime("%Y-%m-%d")
   s.summary     = "Teamwork DAM API wrapper"
   s.description = "Toolkit for interacting with Teamwork Retail's Digital Asset Manager"
@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   # Deploy dependencies
-  spec.add_runtime_dependency 'curb'
+  s.add_runtime_dependency 'curb'
 end

@@ -13,6 +13,8 @@ class TestTeamworkDamClient < Minitest::Test
     refute_nil s
   end
 
+  # TODO: this test is a false positive. We want to test that you can access by both
+  #   styleNo and styleID ... this returns empty images, but non-empty response
   def test_get_style
     s = client.get_style("57be00fd-d2dd-4940-acd9-07b7bc67028e")
     refute_nil s

@@ -10,11 +10,11 @@ module Teamwork
         @access_token = access_token
       end
 
-      # Get images associated with style.
-      def get_style(style_id)
+      # Get images associated by style number.
+      def get_style(style_number)
         execute(
           "external-api/media/get-style",
-          { "styleNo": style_id, "styleID": style_id }
+          { "styleNo": style_number }
         )
       end
 

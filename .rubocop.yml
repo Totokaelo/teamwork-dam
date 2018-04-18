@@ -1,0 +1,3 @@
+# Rubocop overrides go here
+AllCops:
+  TargetRubyVersion: 2.5

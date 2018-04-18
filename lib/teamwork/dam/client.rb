@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'curb'
 require 'json'
 
@@ -12,10 +14,12 @@ module Teamwork
 
       # Get images associated by style number.
       def get_style(style_number)
-        execute(
-          "external-api/media/get-style",
-          { "styleNo": style_number }
+        json = execute(
+          'external-api/media/get-style',
+          'styleNo': style_number
         )
+
+        json.dig('style', 'images')
       end
 
       private

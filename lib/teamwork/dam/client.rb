@@ -19,7 +19,9 @@ module Teamwork
           'styleNo': style_number
         )
 
-        json.dig('style', 'images')
+        images = json.dig('style', 'images')
+
+        images || []
       end
 
       private

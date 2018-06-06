@@ -10,6 +10,9 @@ module Teamwork
       # Documentation says 30, error message says 30, actual API behavior is 29
       WINDOW_SIZE = 29
 
+      # Need to indicate that we're at the end of the cursor
+      CURSOR_END = 'end'
+
       def initialize(client:, modified_after:)
         @client = client
 
@@ -27,13 +30,16 @@ module Teamwork
       # Grabs the next page of styles.
       #
       def next
+        return nil if CURSOR_END
+
         response = get_updated_styles(@cursor)
-        @cursor = response['cursor']
+        @cursor = response['cursor'] || CURSOR_END
 
         if response['styles'].any?
           response['styles'].map do |style_hash|
             style_hash['styleNo']
           end
+        else
         end
       end
 

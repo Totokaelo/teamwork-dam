@@ -8,6 +8,13 @@ class TestTeamworkDamClient < Minitest::Test
     refute_nil Teamwork::Dam::Client
   end
 
+  def test_get_updated_styles
+    s = client.get_updated_styles(
+      modified_after: ((Time.now - (3600 * 24)).to_i * 1000)
+    )
+    puts s.inspect
+  end
+
   def test_get_style
     s = client.get_style('157060')
     refute_nil s

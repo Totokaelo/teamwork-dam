@@ -12,6 +12,21 @@ module Teamwork
         @access_token = access_token
       end
 
+      # Get batches of styles with updated media resources for all items which
+      # were updated after specific time
+      # @param modifiedAfter will be returned with first batch and should be
+      # saved for retrieving only updated data next time
+      #
+      # Last batch will return empty cursor.
+      def get_updated_styles(data = {})
+        execute(
+          'external-api/media/batch-updated-styles',
+          limit: data[:limit] || 29,
+          cursor: data[:cursor],
+          modifiedAfter: data[:modified_after] || data[:modifiedAfter]
+        )
+      end
+
       # Get images associated by style number.
       def get_style(style_number)
         json = execute(
@@ -32,6 +47,7 @@ module Teamwork
         endpoint_url = "#{@endpoint}/#{path}"
         data_json = JSON.generate(data)
 
+        # puts "Data: #{data_json}"
         http = Curl.post(endpoint_url, data_json) do |curl|
           curl.headers['Content-Type'] = 'application/json'
           curl.headers['Access-Token'] = access_token

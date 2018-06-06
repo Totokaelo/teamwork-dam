@@ -11,7 +11,7 @@ module Teamwork
       WINDOW_SIZE = 29
 
       # Need to indicate that we're at the end of the cursor
-      CURSOR_END = 'end'
+      CURSOR_END = 'end'.freeze
 
       def initialize(client:, modified_after:)
         @client = client
@@ -30,7 +30,7 @@ module Teamwork
       # Grabs the next page of styles.
       #
       def next
-        return nil if CURSOR_END
+        return nil if @cursor == CURSOR_END
 
         response = get_updated_styles(@cursor)
         @cursor = response['cursor'] || CURSOR_END

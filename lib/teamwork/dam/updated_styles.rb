@@ -30,8 +30,10 @@ module Teamwork
         response = get_updated_styles(@cursor)
         @cursor = response['cursor']
 
-        response['styles'].map do |style_hash|
-          style_hash['styleNo']
+        if response['styles'].any?
+          response['styles'].map do |style_hash|
+            style_hash['styleNo']
+          end
         end
       end
 
